@@ -13,7 +13,8 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom right, #89f6fe, #66a6ff);
+  min-height: 100vh;
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }

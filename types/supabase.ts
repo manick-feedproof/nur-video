@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       videos: {
         Row: {
+          category: string
           created_at: string | null
           id: string
           name: string
@@ -24,6 +25,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          category?: string
           created_at?: string | null
           id?: string
           name: string
@@ -32,6 +34,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          category?: string
           created_at?: string | null
           id?: string
           name?: string

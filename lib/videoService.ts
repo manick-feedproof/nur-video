@@ -1,10 +1,12 @@
 import { supabase } from "@/lib/supabase";
+import type { VideoCategory } from "@/lib/constants";
 
 export interface Video {
   id: string;
   name: string;
   size: number;
   storage_path: string;
+  category: string;
   created_at: string;
   updated_at: string;
 }
@@ -13,7 +15,8 @@ const BUCKET_NAME = "videos";
 
 export async function uploadVideo(
   file: File,
-  customName?: string
+  customName?: string,
+  category: VideoCategory = "Semua"
 ): Promise<{ success: boolean; error?: string; video?: Video }> {
   try {
     // Upload to storage
@@ -41,6 +44,7 @@ export async function uploadVideo(
         name: customName || file.name,
         size: file.size,
         storage_path: filePath,
+        category: category,
       })
       .select()
       .single();
@@ -59,16 +63,23 @@ export async function uploadVideo(
   }
 }
 
-export async function getVideos(): Promise<{
+export async function getVideos(category?: VideoCategory): Promise<{
   success: boolean;
   videos?: Video[];
   error?: string;
 }> {
   try {
-    const { data, error } = await supabase
+    let query = supabase
       .from("videos")
       .select("*")
       .order("created_at", { ascending: false });
+
+    // Filter by category if provided and not "Semua"
+    if (category && category !== "Semua") {
+      query = query.eq("category", category);
+    }
+
+    const { data, error } = await query;
 
     if (error) throw error;
 

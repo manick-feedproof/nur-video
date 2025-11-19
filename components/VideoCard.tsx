@@ -60,12 +60,12 @@ export default function VideoCard({ video, onDelete }: VideoCardProps) {
   return (
     <>
       <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200">
-        <div className="relative bg-linear-to-br from-blue-500 to-purple-600 aspect-video flex items-center justify-center">
+        <div className="relative bg-[#4a90e2] aspect-video flex items-center justify-center">
           <button
             onClick={() => setShowPlayer(true)}
             className="bg-white/90 hover:bg-white p-4 rounded-full transition-all transform hover:scale-110"
           >
-            <Play size={32} className="text-blue-600" fill="currentColor" />
+            <Play size={32} className="text-[#4a90e2]" fill="currentColor" />
           </button>
         </div>
 
@@ -90,7 +90,7 @@ export default function VideoCard({ video, onDelete }: VideoCardProps) {
           <div className="flex gap-2">
             <button
               onClick={() => setShowPlayer(true)}
-              className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-all"
+              className="flex-1 cursor-pointer flex items-center justify-center gap-2 bg-[#4a90e2] text-white py-2 px-4 rounded-lg transition-all"
             >
               <Play size={18} />
               Play
@@ -112,7 +112,7 @@ export default function VideoCard({ video, onDelete }: VideoCardProps) {
               <button
                 onClick={handleDelete}
                 disabled={isDeleting}
-                className="flex items-center justify-center bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isDeleting ? (
                   <div className="animate-spin rounded-full h-[18px] w-[18px] border-b-2 border-white"></div>

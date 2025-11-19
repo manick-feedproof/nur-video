@@ -2,6 +2,7 @@
 
 import { useAuth } from "@/contexts/AuthContext";
 import { Video } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -14,7 +15,7 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.push("/videos");
+      router.push("/");
     }
   }, [isAuthenticated, router]);
 
@@ -29,29 +30,22 @@ export default function LoginPage() {
 
     const success = login(email, password);
     if (success) {
-      router.push("/videos");
+      router.push("/");
     } else {
       setError("Invalid email or password");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-[#89f6fe] to-[#66a6ff]">
       <div className="w-full max-w-md px-6">
         <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-          <div className="text-center mb-8">
-            <div
-              onClick={() => router.push("/videos")}
-              className="flex items-center mx-auto justify-center w-12 mb-2 cursor-pointer h-12 bg-linear-to-br from-blue-600 to-purple-600 rounded-lg"
-            >
-              <Video size={32} className="text-white" />
-            </div>
+          <div className="text-center mb-6">
+            <span className="text-5xl">🌸</span>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Welcome Back
+              Therapy Relaksasi
             </h1>
-            <p className="text-gray-600">
-              Sign in to Nurhasana&apos;s Video Platform
-            </p>
+            <p className="text-gray-600">Sign in to upload videos</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -97,10 +91,16 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full cursor-pointer bg-[#4a90e2] text-white font-semibold py-3 px-4 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98]"
             >
               Sign In
             </button>
+            <Link
+              href="/"
+              className="text-center w-full self-stretch block text-sm text-gray-500"
+            >
+              Back to Home
+            </Link>
           </form>
 
           <div className="mt-6 pt-6 border-t border-gray-200">

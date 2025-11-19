@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NurVideo Platform",
-  description: "Share and manage your videos",
+  title: "Therapy Relaksasi",
+  description: "Share and manage your videos for therapy relaksasi",
 };
 
 export default function RootLayout({
