@@ -15,7 +15,7 @@ export default function Header() {
   const handleLogout = () => {
     logout();
     setMobileMenuOpen(false);
-    router.push("/login");
+    router.push("/videos");
   };
 
   const closeMobileMenu = () => {
